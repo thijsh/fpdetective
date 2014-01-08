@@ -47,13 +47,12 @@ unzip top-1m.csv.zip
 sudo rm -f top-1m.csv.zip
 
 # Download browser binaries from git repo
-
 mkdir jobs
 mkdir logs
 mkdir bins
 cd bins
 
-#phantom modified
+# setup PhantomJS modified
 mkdir phantomjs
 cd phantomjs
 wget "https://github.com/fpdetective/phantomjs/releases/download/v1.9/phantomjsm$bits.tar.gz"
@@ -61,21 +60,20 @@ tar -xzf "phantomjsm$bits.tar.gz"
 mv "phantomjs" "phantomjs"$bits"mod"
 sudo rm -f "phantomjsm$bits.tar.gz"
 
-#phantom
+# setup PhantomJS
 wget "https://phantomjs.googlecode.com/files/phantomjs-1.9.2-linux-$machine.tar.bz2"
 tar -xvjf "phantomjs-1.9.2-linux-$machine.tar.bz2"
 mv "phantomjs-1.9.2-linux-$machine/bin/phantomjs" "phantomjs$bits"
 sudo rm -f "phantomjs-1.9.2-linux-$machine.tar.bz2"
 sudo rm -rf "phantomjs-1.9.2-linux-$machine"
 
-
-# chromium
+# setup Chromium
 cd ..
 wget "https://github.com/fpdetective/phantomjs/releases/download/v1.9/chromium$bits.tar.gz"
 tar -xzf "chromium$bits.tar.gz"
 sudo rm -f "chromium$bits.tar.gz"
 
-# setup chromedriver
+# setup ChromeDriver
 mkdir chromedriver
 cd chromedriver
 wget "http://chromedriver.storage.googleapis.com/2.5/chromedriver_linux$bits.zip"
@@ -83,12 +81,15 @@ unzip "chromedriver_linux$bits.zip"
 mv chromedriver "chromedriver$bits"
 sudo rm -f "chromedriver_linux$bits.zip"
 
+# setup CasparJS
 cd ..
-wget https://github.com/n1k0/casperjs/zipball/1.0.3
-unzip 1.0.3
-mv n1k0-casperjs-76fc831/ casperjs
-rm 1.0.3
+wget https://github.com/n1k0/casperjs/zipball/1.1-beta3 -O casperjs.zip
+unzip casperjs.zip
+sudo rm -r -f casperjs
+mv n1k0-casperjs-4f105a9/ casperjs
+sudo rm -f casperjs.zip
 
+# setup FFdec
 mkdir ffdec
 cd ffdec
 wget http://www.free-decompiler.com/flash/download/ffdec_1.7.3u2.zip
