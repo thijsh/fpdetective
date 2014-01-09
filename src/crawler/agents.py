@@ -48,7 +48,16 @@ AGENT_CFG_PHANTOM_MOD_HOME_PAGE = {
                          'timeout': 90
                         }
 
-
+AGENT_CFG_SCREENSHOT_PHANTOM_LAZY = {
+                         'type': 'screenshot',
+                         'post_visit_func': lp.parse_log_dump_results,
+                         'binary_path': cm.PHANTOM_MOD_BINARY,
+                         'cmd_line_options': PHANTOM_COMMON_OPTIONS,
+                         'fc_fontdebug': 0,
+                         'main_js': cm.CASPER_JS_LAZY_HOMEPAGER,
+                         'timeout': 90,
+			 'screenshot': True,
+                        }
 
 AGENT_CFG_DNT_PHANTOM_LAZY = {
                          'type': 'dnt',
@@ -69,21 +78,21 @@ AGENT_CFG_PHANTOM_MOD_CLICKER = {
                         }
 
 AGENT_CFG_CHROME_LAZY = {
-                    'type': 'chrome_lazy',
-                    'binary_path': cm.CHROME_MOD_BINARY,
-                    'use_mitm_proxy': True,
-                    'post_visit_func': mitm.process_dump, # register function to post-process data
-                    'cmd_line_options': CHROME_COMMON_OPTIONS,
-                    'timeout': 50
-                    }
+                    	 'type': 'chrome_lazy',
+                    	 'binary_path': cm.CHROME_MOD_BINARY,
+                    	 'use_mitm_proxy': True,
+                    	 'post_visit_func': mitm.process_dump, # register function to post-process data
+                    	 'cmd_line_options': CHROME_COMMON_OPTIONS,
+                    	 'timeout': 50
+                    	}
 
 AGENT_CFG_CHROME_CLICKER = {
-                    'type': 'chrome_clicker',
-                    'binary_path': 'python %s' % cm.CRAWLER_PY_PATH,
-                    'use_mitm_proxy': True,
-                    'post_visit_func': mitm.process_dump,
-                    'timeout': 240
-                    }
+                    	 'type': 'chrome_clicker',
+                    	 'binary_path': 'python %s' % cm.CRAWLER_PY_PATH,
+                    	 'use_mitm_proxy': True,
+                    	 'post_visit_func': mitm.process_dump,
+                    	 'timeout': 240
+                    	}
    
 class CrawlJob(object):
     def __init__(self, agent):
@@ -280,6 +289,9 @@ def create_job_folder():
 def crawl_sites(url_tuples, crawler_type, num_crawl_urls=0, max_parallel_procs=MAX_PARALLEL_PROCESSES):
     if crawler_type == 'lazy':                    
         agent_cfg = AGENT_CFG_PHANTOM_MOD_HOME_PAGE
+        agent = HeadlessAgent()
+    elif crawler_type == 'screenshot':
+        agent_cfg = AGENT_CFG_SCREENSHOT_PHANTOM_LAZY
         agent = HeadlessAgent()
     elif crawler_type == 'clicker':
         agent_cfg = AGENT_CFG_PHANTOM_MOD_CLICKER
