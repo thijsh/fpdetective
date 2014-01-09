@@ -98,10 +98,10 @@ sudo rm -f ffdec_1.7.3u2.zip
 
 cd ../..
 
-# add alias
-echo alias follow_fp_log='tail -f ~/fpbase/run/logs/latest' >> ~/.bashrc
-echo alias go_latest_job='cd ~/fpbase/run/jobs/latest' >> ~/.bashrc
-echo alias go_fp_src='cd ~/fpbase/src/crawler' >> ~/.bashrc
+# Add aliases
+echo "alias follow_fp_log='tail -f ~/fpbase/run/logs/latest'" >> ~/.bashrc
+echo "alias go_latest_job='cd ~/fpbase/run/jobs/latest'" >> ~/.bashrc
+echo "alias go_fp_src='cd ~/fpbase/src/crawler'" >> ~/.bashrc
 source ~/.bashrc
 
 echo "The setup script has finished."
