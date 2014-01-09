@@ -59,6 +59,17 @@ AGENT_CFG_SCREENSHOT_PHANTOM_LAZY = {
 			 'screenshot': True,
                         }
 
+AGENT_CFG_TEST = {
+                         'type': 'test',
+                         'post_visit_func': lp.parse_log_dump_results,
+                         'binary_path': cm.PHANTOM_MOD_BINARY,
+                         'cmd_line_options': PHANTOM_COMMON_OPTIONS,
+                         'fc_fontdebug': 0,
+                         'main_js': cm.CASPER_JS_TEST,
+                         'timeout': 10,
+			 'screenshot': True,
+                        }
+
 AGENT_CFG_DNT_PHANTOM_LAZY = {
                          'type': 'dnt',
                          'post_visit_func': lp.parse_log_dump_results,
@@ -292,6 +303,9 @@ def crawl_sites(url_tuples, crawler_type, num_crawl_urls=0, max_parallel_procs=M
         agent = HeadlessAgent()
     elif crawler_type == 'screenshot':
         agent_cfg = AGENT_CFG_SCREENSHOT_PHANTOM_LAZY
+        agent = HeadlessAgent()
+    elif crawler_type == 'test':
+        agent_cfg = AGENT_CFG_TEST
         agent = HeadlessAgent()
     elif crawler_type == 'clicker':
         agent_cfg = AGENT_CFG_PHANTOM_MOD_CLICKER

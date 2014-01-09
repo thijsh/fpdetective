@@ -33,6 +33,7 @@ JS_BASE_PATH = join(BASE_FP_SRC_FOLDER, 'js') # !!! we expect symlink fpbase be 
 CASPER_JS_CLICKER = join(JS_BASE_PATH, 'casper_clicker.js')
 CASPER_JS_LAZY_HOMEPAGER = join(JS_BASE_PATH, 'casper_lazy_homepager.js')
 CASPER_JS_DNT_LAZY = join(JS_BASE_PATH, 'phantom_lazy_DNT.js')
+CASPER_JS_TEST = join(JS_BASE_PATH, 'casper_test.js')
 
 CRAWLER_PY_PATH = join(BASE_FP_SRC_FOLDER, 'crawler.py')
 BASE_TEST_URL_ONLINE = 'http://homes.esat.kuleuven.be/~gacar/phtest/' 
