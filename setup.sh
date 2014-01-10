@@ -66,12 +66,16 @@ tar -xvjf "phantomjs-1.9.2-linux-$machine.tar.bz2"
 mv "phantomjs-1.9.2-linux-$machine/bin/phantomjs" "phantomjs$bits"
 sudo rm -f "phantomjs-1.9.2-linux-$machine.tar.bz2"
 sudo rm -rf "phantomjs-1.9.2-linux-$machine"
+cd ..
 
 # setup Chromium
-cd ..
+mkdir "chromium$bits"
+cd "chromium$bits"
 wget "https://github.com/fpdetective/phantomjs/releases/download/v1.9/chromium$bits.tar.gz"
-tar -xzf "chromium$bits.tar.gz"
+# NOTE: chromium is NOT GZIPPED... just plain tar
+tar -xvf "chromium$bits.tar.gz"
 sudo rm -f "chromium$bits.tar.gz"
+cd ..
 
 # setup ChromeDriver
 mkdir chromedriver
