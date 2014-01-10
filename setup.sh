@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# MODIFIED SETUP SCRIPT BY: 
+# Thijs Houtenbos
+
 #"i686" or "x86_64"
 machine=`uname -m`
 if [ $machine = "x86_64" ] ; then 
@@ -55,8 +58,8 @@ cd bins
 # setup PhantomJS modified
 mkdir phantomjs
 cd phantomjs
-wget "https://github.com/fpdetective/phantomjs/releases/download/v1.9/phantomjsm$bits.tar.gz"
-tar -xzf "phantomjsm$bits.tar.gz"
+wget "https://github.com/thijsh/phantomjs/releases/download/v1.9/phantomjsm$bits.tar.gz"
+tar -xzvf "phantomjsm$bits.tar.gz"
 mv "phantomjs" "phantomjs"$bits"mod"
 sudo rm -f "phantomjsm$bits.tar.gz"
 
@@ -69,13 +72,10 @@ sudo rm -rf "phantomjs-1.9.2-linux-$machine"
 cd ..
 
 # setup Chromium
-mkdir "chromium$bits"
-cd "chromium$bits"
-wget "https://github.com/fpdetective/phantomjs/releases/download/v1.9/chromium$bits.tar.gz"
-# NOTE: chromium is NOT GZIPPED... just plain tar
-tar -xvf "chromium$bits.tar.gz"
+wget "https://github.com/thijsh/phantomjs/releases/download/v1.9/chromium$bits.tar.gz"
+# NOTE: chromium was NOT GZIPPED in original repo... just plain tar
+tar -xzvf "chromium$bits.tar.gz"
 sudo rm -f "chromium$bits.tar.gz"
-cd ..
 
 # setup ChromeDriver
 mkdir chromedriver
